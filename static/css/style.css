@@ -1,17 +1,36 @@
 :root {
-  --baseBG: #8e75a9;
-  --linkText: #ffffff;
-  --link-box-BG: #6b02aa;
-  --linkBorder: #8e75a9;
-  --headingText: #fff;
-
-  --gradient-color1: #bb4bfd;
-  --gradient-color2: #6b02aa;
+  --linkText: #eceff4;
+  --link-box-BG: #5e81ac;
+  --linkBorder: #7aacbb;
+  --headingText: #4c566a;
 }
 
+html {
+  /* from https://css-pattern.com/herringbone */
+  --s: 50px; /* control the size*/
+  --c1: #a3be8c;
+  --c2: #ebcb8b;
+
+  --c:#0000 75%,var(--c1) 0;
+  --g1:conic-gradient(at 78% 3%,var(--c));
+  --g2:conic-gradient(at 3% 78%,var(--c));
+
+  background:
+    var(--g1),
+    var(--g1) var(--s) var(--s),
+    var(--g1) calc(2*var(--s)) calc(2*var(--s)),
+    var(--g1) calc(3*var(--s)) calc(3*var(--s)),
+    var(--g2) 0 calc(3*var(--s)),
+    var(--g2) var(--s) 0,
+    var(--g2) calc(2*var(--s)) var(--s),
+    var(--g2) calc(3*var(--s)) calc(2*var(--s))
+    var(--c2);
+  background-size: calc(4*var(--s)) calc(4*var(--s));
+}
+
+/* ================================================= */
+
 body {
-  background: var(--gradient-color1);
-  background: linear-gradient(129deg, var(--gradient-color1) 50%, var(--gradient-color2) 100%);
   box-sizing: border-box;
 
   display: flex;
@@ -28,6 +47,17 @@ body {
 .banner {
   color: var(--headingText);
   text-align: center;
+  padding: 5px 10px;
+  margin-top: 20px;
+
+  /* From https://css.glass */
+  /* background: rgba(252, 247, 247, 0.08); */
+  background: rgba(235, 203, 139, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(252, 247, 247, 0.06);
 }
 
 .heading {
@@ -39,6 +69,7 @@ body {
     display: block;
   }
 }
+
 /* ================================================= */
 
 .link-list {
@@ -100,33 +131,9 @@ body {
   display: inline-block;
   transition: transform 0.05s ease-in-out;
 }
+
 .copy-btn:active {
   transform: scale(0.9);
 }
 
-/* ================================================= */
-/* for overlay  */
-body {
-  background-image: url("../image/background.png");
-  /* Image by Chakkree Chantakad from Pixabay  */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #800080;
-  opacity: 0.3;
-  z-index: -1;
-}
-
-.link-list {
-  position: relative;
-  z-index: 1;
-}
 /* ================================================= */
